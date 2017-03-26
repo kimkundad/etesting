@@ -74,7 +74,7 @@ class CourseinfoController extends Controller
         ->where('courses.id', $id)
         ->leftjoin('submitcourses', 'courses.id', '=', 'submitcourses.course_id')
         ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
-        ->first();
+        ->get();
     //  dd($coursess);
       $data['header'] = "แก้ไขคอร์ส";
       //dd($courseinfo);
