@@ -19,6 +19,7 @@ use Swift_Transport;
 use Swift_Message;
 use Swift_Mailer;
 use App\qrcode;
+use App\Users;
 
 class CourseinfoController extends Controller
 {
