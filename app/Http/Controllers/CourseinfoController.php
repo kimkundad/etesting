@@ -11,7 +11,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\DB;
 use Excel;
 use File;
-use App\users;
+use App\Users;
 use App\submitcourse;
 use App\bank;
 use Mail;
@@ -19,7 +19,7 @@ use Swift_Transport;
 use Swift_Message;
 use Swift_Mailer;
 use App\qrcode;
-use App\users;
+
 
 class CourseinfoController extends Controller
 {
@@ -197,7 +197,7 @@ class CourseinfoController extends Controller
            'line' => 'required',
        ]);
 
-       $package = users::find(Auth::user()->id);
+       $package = Users::find(Auth::user()->id);
        $package->name = $request['name'];
        $package->hbd = $request['hbd'];
        $package->phone = $request['phone'];
