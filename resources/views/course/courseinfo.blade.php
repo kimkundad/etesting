@@ -179,7 +179,7 @@ return "$strDay $strMonthThai $strYear";
                       @elseif($courseinfo->Uid == Auth::user()->id && $courseinfo->status == 0)
                       <a type="button" href="{{url('confirm_course/'.$objs->id)}}" class="btn btn-success1 btn-lg btn-block"
                       style="padding: 6px 18px;">จองคอร์สเรียน</a>
-                      @elseif($courseinfo->Uid != Auth::user()->id)
+                      @elseif($courseinfo->Uid != Auth::user()->id && $courseinfo->course_id == $objs->id)
                       <a type="button" href="{{url('confirm_course/'.$objs->id)}}" class="btn btn-success1 btn-lg btn-block"
                       style="padding: 6px 18px;">จองคอร์สเรียน</a>
                       @else
