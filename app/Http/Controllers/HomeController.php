@@ -1,0 +1,68 @@
+<?php
+
+namespace App\Http\Controllers;
+
+
+use App\course;
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class HomeController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+  /*  public function __construct()
+    {
+        $this->middleware('auth');
+    }
+*/
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
+    }
+
+
+    public function home()
+    {
+      $objs = DB::table('courses')
+          ->select(
+          'courses.*',
+          'courses.id as A',
+          'typecourses.*'
+          )
+          ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+          ->orderBy('A', 'desc')
+          ->limit(8)
+          ->get();
+
+      $data['objs'] = $objs;
+      return view('welcome', $data);
+    }
+
+    public function course()
+    {
+      $objs = DB::table('courses')
+          ->select(
+          'courses.*',
+          'courses.id as A',
+          'typecourses.*'
+          )
+          ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+          ->orderBy('A', 'desc')
+          ->get();
+
+      $data['objs'] = $objs;
+      return view('course.index', $data);
+    }
+
+
+}
