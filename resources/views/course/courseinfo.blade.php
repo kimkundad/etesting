@@ -166,9 +166,10 @@ return "$strDay $strMonthThai $strYear";
                 <a type="button" href="{{url('confirm_course/'.$objs->id)}}" class="btn btn-success1 btn-lg btn-block"
                 style="padding: 6px 18px;">จองคอร์สเรียน</a>
                 @else
+                <div class="hidden">{{$i = 1}}</div>
                       @foreach($courseinfos as $courseinfo)
 
-                      {{$i = 1}}
+
 
                       @if ($courseinfo->Uid == Auth::user()->id && $courseinfo->status == 2)
                       <a type="button" class="btn btn-success1 btn-lg btn-block"
@@ -180,7 +181,7 @@ return "$strDay $strMonthThai $strYear";
                       <a type="button" href="{{url('confirm_course/'.$objs->id)}}" class="btn btn-success1 btn-lg btn-block"
                       style="padding: 6px 18px;">จองคอร์สเรียน</a>
                       @elseif($courseinfo->Uid != Auth::user()->id && $courseinfo->course_id == $objs->id && $i == 1)
-                      {{$i++}}
+                      <div class="hidden">{{$i++}}</div>
                       <a type="button" href="{{url('confirm_course/'.$objs->id)}}" class="btn btn-success1 btn-lg btn-block"
                       style="padding: 6px 18px;">จองคอร์สเรียน</a>
                       @else
