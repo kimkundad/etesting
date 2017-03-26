@@ -232,7 +232,7 @@ return "$strDay $strMonthThai $strYear";
 
                 <div class="form-group col-md-6 bank" style="width: 48%; ">
                   <label for="exampleInputEmail1">เวลาที่โอน</label>
-                  <input type="text" class="form-control" name="timer" placeholder="10.52น.">
+                  <input type="text" class="form-control" name="timer" placeholder="10.52น." required="">
                 </div>
 
 
