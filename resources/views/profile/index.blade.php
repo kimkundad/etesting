@@ -230,6 +230,7 @@
           <img data-view="user_avatar_690" alt="" src="assets/images/avatar/{{$objs->avatar}}"
           class="avatar avatar-40 photo" width="40" height="40" data-pin-nopin="true">
           @else
+          
           <img data-view="user_avatar_690" alt="" src="assets/images/avatar/blank_avatar_240x240.gif"
           class="avatar avatar-40 photo" width="40" height="40" data-pin-nopin="true">
           @endif
