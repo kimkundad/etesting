@@ -377,9 +377,9 @@ class CourseinfoController extends Controller
          // send email
            $data_toview = array();
          //  $data_toview['pathToImage'] = "assets/image/email-head.jpg";
-           date_default_timezone_set("Asia/Bangkok");
+
            $data_toview['data'] = $coursess;
-           $data_toview['datatime'] = date("d-m-Y H:i:s");
+
 
            $email_sender   = 'learnsbuy@gmail.com';
            $email_pass     = 'Homeayumu4549';
@@ -414,7 +414,7 @@ class CourseinfoController extends Controller
                            $message->from($data['sender'], 'Learnsbuy');
                            $message->to($data['sender'])
                            ->replyTo($data['sender'], 'Learnsbuy.')
-                           ->subject('ใบเสร็จสำหรับการสั่งซื้อคอร์สเรียน Learnsbuy ของคุณในวันที่ '.date("d-m-Y H:i:s"));
+                           ->subject('ใบเสร็จสำหรับการสั่งซื้อคอร์สเรียน Learnsbuy ของคุณในวันที่ ');
 
                            //echo 'Confirmation email after registration is completed.';
                        });
