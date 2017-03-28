@@ -377,9 +377,9 @@ class CourseinfoController extends Controller
          // send email
            $data_toview = array();
          //  $data_toview['pathToImage'] = "assets/image/email-head.jpg";
-
+           date_default_timezone_set("Asia/Bangkok");
            $data_toview['data'] = $coursess;
-
+           $data_toview['datatime'] = date("d-m-Y H:i:s");
 
            $email_sender   = 'learnsbuy@gmail.com';
            $email_pass     = 'Homeayumu4549';
