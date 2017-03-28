@@ -414,7 +414,7 @@ class CourseinfoController extends Controller
                            $message->from($data['sender'], 'Learnsbuy');
                            $message->to($data['sender'])
                            ->replyTo($data['sender'], 'Learnsbuy.')
-                           ->subject('ใบเสร็จสำหรับการสั่งซื้อคอร์สเรียน Learnsbuy ของคุณในวันที่ ');
+                           ->subject('ใบเสร็จสำหรับการสั่งซื้อคอร์สเรียน Learnsbuy ');
 
                            //echo 'Confirmation email after registration is completed.';
                        });
