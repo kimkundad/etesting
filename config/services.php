@@ -35,9 +35,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
     'facebook' => [
-    'client_id' => '1363686146995255',
-    'client_secret' => 'd0544a31544817a9cca4bc9033925d40',
-    'redirect' => 'http://localhost/enihongo/public/callback',
+    'client_id' => '796037283879365',
+    'client_secret' => 'ac3bbb0158a6369736b72a0e16c1c6f4',
+    'redirect' => 'http://www.learnsabuy.com/callback',
     ],
 
 ];
