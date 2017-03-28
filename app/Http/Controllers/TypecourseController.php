@@ -42,7 +42,7 @@ class TypecourseController extends Controller
      */
     public function store(Request $request)
     {
-        $package = new typecourses();
+       $package = new typecourses();
        $package->type_name = $request['name'];
        $package->save();
        return redirect(url('admin/typecourse'))->with('success','เพิ่ม'.$request['name'].' เสร็จเรียบร้อยแล้ว');
@@ -67,7 +67,7 @@ class TypecourseController extends Controller
      */
     public function edit($id)
     {
-        $obj = typecourses::find($id);    
+        $obj = typecourses::find($id);
         $data['url'] = url('admin/typecourse/'.$id);
         $data['header'] = "แก้ไขประเภทคอร์ส";
         $data['method'] = "put";
@@ -85,7 +85,7 @@ class TypecourseController extends Controller
     public function update(Request $request, $id)
     {
         $package = typecourses::find($id);
-         $package->name = $request['name'];
+         $package->type_name = $request['name'];
          $package->save();
          return redirect(url('admin/typecourse'))->with('success','Edit successful');
     }
