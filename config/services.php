@@ -35,10 +35,20 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+
     'facebook' => [
+    'client_id' => env('FACEBOOK_CLIENT_ID'),
+    'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+    'redirect' => env('FACEBOOK_REDIRECT_URI')
+    ],
+
+
+  
+
+  /*  'facebook' => [
     'client_id' => '796037283879365',
     'client_secret' => 'ac3bbb0158a6369736b72a0e16c1c6f4',
     'redirect' => 'http://www.learnsabuy.com/callback',
-    ],
+  ], */
 
 ];
