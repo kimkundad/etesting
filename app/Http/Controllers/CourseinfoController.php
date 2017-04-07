@@ -132,12 +132,47 @@ class CourseinfoController extends Controller
     {
       $courseinfo = course::find($id);
 
-    //  dd($data);
+      $count_course = DB::table('submitcourses')
+        ->select(
+           'submitcourses.*'
+           )
+        ->where('submitcourses.user_id', Auth::user()->id)
+        ->where('submitcourses.course_id', $courseinfo->id)
+        ->first();
 
-      return view('confirm_course.index')->with([
-        'objs' =>$courseinfo,
-        'user' =>"แก้ไขคอร์ส"
-      ]);
+
+        $coursess = DB::table('submitcourses')
+          ->select(
+             'submitcourses.*',
+             'submitcourses.user_id as Uid',
+             'submitcourses.id as Oid',
+             'users.*',
+             'courses.*'
+             )
+          ->where('submitcourses.user_id', Auth::user()->id)
+          ->where('submitcourses.course_id', $courseinfo->id)
+          ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
+          ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
+          ->first();
+
+      //dd($count_course);
+      if($count_course->status == 1 || $count_course->status == 2){
+
+        return view('confirm_course.bil_course')->with([
+          'courseinfo' =>$coursess,
+          'user' =>"แก้ไขคอร์ส"
+        ]);
+
+      }else{
+
+        return view('confirm_course.index')->with([
+          'objs' =>$courseinfo,
+          'user' =>"แก้ไขคอร์ส"
+        ]);
+
+      }
+
+
 
 
     }

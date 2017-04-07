@@ -108,15 +108,28 @@ return "$strDay $strMonthThai $strYear";
 
 
     <div class="row">
-        <div class="col-md-12 col-md-offset-3" >
-         <h3 style="margin-bottom: 0px;">{{$courseinfo->title_course}} <span class="head-lines"></span></h3>
+        <div class="col-md-10 col-md-offset-3" >
+         <h3 style="margin-bottom: 0px;" class="">{{$courseinfo->title_course}} <span class="head-lines"></span></h3>
 
-          <div class="col-xs-12  col-md-6 extra-paddingright ">
+          <div class="col-xs-12  col-md-8 ">
+
+              @if($courseinfo->status == 1 || $courseinfo->status == 0)
               <h3 class="text-center" style="color:#f36510">
-                <i class="fa fa-meh-o"></i> รอการตรวจสอบ
+                <i class="fa fa-smile-o"></i> รอการตรวจสอบ
               </h3>
-              <p class="text-center"> ระบบได้ทำการส่ง ใบเสร็จสำหรับการสั่งซื้อคอร์สเรียน Learnsbuy ของคุณ เป็นที่เรียบร้อยแล้ว หลังจากที่เจ้าหน้าที่ทำการตรวจสอบ จะทำการแจ้งเพื่อให้ใช้งาน
-              เข้าไปยังคอร์สที่สั่งซื้อ</p>
+              <img src="{{url('assets/images/docs-anywhere.png')}}" class="img-responsive" style="margin: 0 auto">
+              <p class="text-center"> ระบบได้ทำการส่ง ใบเสร็จของการซื้อคอร์สเรียน Learnsbuy ไปที่อีเมล์ของคุณแล้วครับ หลังจากที่เจ้าหน้าที่ทำการตรวจสอบข้อมูล จะทำการส่งอีเมล์แจ้งให้เริ่มเรียนได้ภายใน 48 ชม.หนังสือเรียนจะถูกจัดส่งไปตามที่อยู่ใช้เวลา 3-14 วัน (ขึ้นอยู่กับสต็อกหนังสือและไปรษณีย์ครับ)</p>
+              @else
+              <h3 class="text-center text-success">
+                <i class="fa fa-child"></i> ทำการชำระเงินเรียบร้อย
+              </h3>
+              <img src="{{url('assets/images/send-videos-quickly.png')}}" class="img-responsive" style="margin: 0 auto">
+              <p class="text-center text-success" style="font-size:16px;">นักเรียนที่ระบบทำการอนุมัติแล้ว สามารถดาวน์โหลดแอพพลิเคชั่น ios android แล้วมาสนุกกับการเรียนรู้ภาษาญี่ปุ่นกันครับ</p>
+              @endif
+
+
+
+
             <div class="">
             <div class="col-md-12 course-overall-wrapper">
               <h4>บิลเลขที่ {{$courseinfo->Oid}}</h4>

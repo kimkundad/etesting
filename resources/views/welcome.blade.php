@@ -18,28 +18,7 @@ footer {
 </style>
 @stop('stylesheet')
 @section('content')
-<div class="intro-header">
-<div class="container" style="margin-top:0px;">
-    <div class="row">
-        <div class="col-md-12" >
-        <!--    <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
 
-                <div class="panel-body">
-                    Your Application's Landing Page.
-                </div>
-            </div> -->
-            <div class="intro-message">
-                <h1>ภาษาญี่ปุ่น ครูโฮม</h1>
-            <h3>เกียรตินิยมอันดับ 1 (เหรียญทอง)<br>อักษรฯ จุฬา</h3><br>
-            <a type="button" class="btn btn-success1 btn-lg" style="padding: 6px 18px;">เริ่มเรียนกัน</a>
-            <a type="button" class="btn btn-default1 btn-lg" style="padding: 6px 18px;">ขอคิดดูก่อน</a>
-            </div>
-
-        </div>
-    </div>
-</div>
-</div>
 
 <div class="banner">
     <div class="container" style="background-color: #00c402;">
