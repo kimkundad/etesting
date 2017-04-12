@@ -162,7 +162,6 @@ class OrderController extends Controller
                'banks.*',
                'courses.*'
                )
-            ->where('submitcourses.user_id', Auth::user()->id)
             ->where('submitcourses.id', $id)
             ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
             ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
