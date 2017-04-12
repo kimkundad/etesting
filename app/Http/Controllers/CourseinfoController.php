@@ -464,6 +464,17 @@ class CourseinfoController extends Controller
                            //echo 'Confirmation email after registration is completed.';
                        });
 
+
+                       Mail::send('mails.index', $data_toview, function($message) use ($data)
+                       {
+                           $message->from($data['sender'], 'Learnsbuy');
+                           $message->to($data['emailto'])
+                           ->replyTo($data['sender'], 'Learnsbuy.')
+                           ->subject('ใบเสร็จสำหรับการสั่งซื้อคอร์สเรียน Learnsbuy ');
+
+                           //echo 'Confirmation email after registration is completed.';
+                       });
+
            }catch(\Swift_TransportException $e){
                $response = $e->getMessage() ;
                echo $response;
