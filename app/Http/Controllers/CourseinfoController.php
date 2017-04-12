@@ -156,21 +156,31 @@ class CourseinfoController extends Controller
           ->first();
 
       //dd($count_course);
-      if($count_course->status == 1 || $count_course->status == 2){
+      if(isset($count_course)){
 
-        return view('confirm_course.bil_course')->with([
-          'courseinfo' =>$coursess,
-          'user' =>"แก้ไขคอร์ส"
-        ]);
+        if($count_course->status == 1 || $count_course->status == 2){
+
+          return view('confirm_course.bil_course')->with([
+            'courseinfo' =>$coursess,
+            'user' =>"แก้ไขคอร์ส"
+          ]);
+
+        }else{
+
+          return view('confirm_course.index')->with([
+            'objs' =>$courseinfo,
+            'user' =>"แก้ไขคอร์ส"
+          ]);
+
+        }
 
       }else{
-
         return view('confirm_course.index')->with([
           'objs' =>$courseinfo,
           'user' =>"แก้ไขคอร์ส"
         ]);
-
       }
+
 
 
 
