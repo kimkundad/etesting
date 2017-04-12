@@ -16,8 +16,9 @@ repeat-y;width:100%;display:block">
 <br>
 <div style="margin-bottom:20px;text-align:left">
   <b>หมายเลขคำสั่งซื้อ:</b> {{$data->Oid}}<br>
-  <b>วันที่สั่งซื้อ:</b> {{$datatime}}</div>
-  <b>ชั่วโมงเรียน:</b> {{$data->hrcourse}} ชม.</div>
+  <b>วันที่สั่งซื้อ:</b> {{$datatime}}<br>
+<b>ชั่วโมงเรียน:</b> {{$data->hrcourse}} ชม.</div>
+
 </div>
 <div>
 <div>
