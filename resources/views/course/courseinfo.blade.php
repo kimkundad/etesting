@@ -271,6 +271,10 @@ return "$strDay $strMonthThai $strYear";
                                                         <a href="user_profile-2.html" class="ap-comment-author"> {{$comment->name}}</a>
                                                          - <a href="user_profile-2.html" class="ap-comment-time"><time><?php echo DateThai($comment->created_att); ?></time></a>
 
+                                                         @if (Auth::guest())
+
+                                                         @else
+
                                                          @if ($comment->u_id != Auth::user()->id)
 
                                                          @else
@@ -384,6 +388,7 @@ return "$strDay $strMonthThai $strYear";
 
 
 
+                                                         @endif
                                                          @endif
 
                                                        </div>
