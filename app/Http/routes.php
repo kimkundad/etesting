@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
 
   Route::put('/bil_course/{id}', 'CourseinfoController@bil_course');
 
-
+  Route::resource('comment', 'CommentController');
   Route::resource('profile', 'UserprofileController');
   Route::resource('user_course', 'MycourseController');
   Route::resource('user_confirm', 'UserconfirmController');

@@ -19,6 +19,7 @@ use Swift_Transport;
 use Swift_Message;
 use Swift_Mailer;
 use App\qrcode;
+use App\comment;
 
 
 class CourseinfoController extends Controller
@@ -64,6 +65,28 @@ class CourseinfoController extends Controller
     {
       $courseinfo = course::find($id);
 
+      $count_course = DB::table('submitcourses')
+        ->select(
+           'submitcourses.*'
+           )
+        ->where('submitcourses.course_id', $id)
+        ->count();
+
+
+        $comment_course = DB::table('comments')
+          ->select(
+             'comments.*',
+             'comments.id as c_id',
+             'comments.created_at as created_att',
+             'users.*',
+             'users.id as u_id'
+             )
+          ->leftjoin('users', 'users.id', '=', 'comments.user_id')
+          ->where('comments.course_id', $id)
+          ->get();
+
+          //dd($comment_course);
+
       $coursess = DB::table('courses')
         ->select(
            'submitcourses.*',
@@ -81,6 +104,8 @@ class CourseinfoController extends Controller
       //dd($courseinfo);
       return view('course.courseinfo')->with([
            'courseinfos' =>$coursess,
+           'count_course' => $count_course,
+           'comment_course' => $comment_course,
            'objs' => $courseinfo
          ]);
     }

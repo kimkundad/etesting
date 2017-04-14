@@ -70,6 +70,7 @@ class CourseController extends Controller
            'detail' => 'required',
            'start_course' => 'required',
            'end_course' => 'required',
+           'discount' => 'required'
        ]);
 
 
@@ -96,6 +97,7 @@ class CourseController extends Controller
       $obj->time_course = $request['time_course'];
       $obj->day_course = $request['day_course'];
       $obj->image_course = $input['imagename'];
+      $obj->discount = $request['discount'];
       $obj->save();
 
       return redirect(url('admin/course/'))->with('success_course','เพิ่มข้อมูล '.$request['name'].' สำเร็จ');
@@ -158,6 +160,7 @@ class CourseController extends Controller
                'detail' => 'required',
                'start_course' => 'required',
                'end_course' => 'required',
+               'discount' => 'required'
            ]);
 
 
@@ -184,6 +187,7 @@ class CourseController extends Controller
            $obj->time_course = $request['time_course'];
            $obj->day_course = $request['day_course'];
            $obj->image_course = $input['imagename'];
+           $obj->discount = $request['discount'];
            $obj->save();
 
            return redirect(url('admin/course/'.$id.'/edit'))->with('success_course','แก้ไขข้อมูล '.$request['name'].' สำเร็จ');
@@ -221,6 +225,7 @@ class CourseController extends Controller
            $obj->end_course = $request['end_course'];
            $obj->time_course = $request['time_course'];
            $obj->day_course = $request['day_course'];
+           $obj->discount = $request['discount'];
            $obj->save();
 
            return redirect(url('admin/course/'.$id.'/edit'))->with('success_course','แก้ไขข้อมูล '.$request['name'].' สำเร็จ');
@@ -258,6 +263,7 @@ class CourseController extends Controller
            $obj->time_course = $request['time_course'];
            $obj->day_course = $request['day_course'];
            $obj->image_course = $input['imagename'];
+           $obj->discount = $request['discount'];
            $obj->save();
 
            return redirect(url('admin/course/'.$id.'/edit'))->with('success_course','แก้ไขข้อมูล '.$request['name'].' สำเร็จ');
@@ -287,6 +293,7 @@ class CourseController extends Controller
            $obj->end_course = $request['end_course'];
            $obj->time_course = $request['time_course'];
            $obj->day_course = $request['day_course'];
+           $obj->discount = $request['discount'];
            $obj->save();
 
            return redirect(url('admin/course/'.$id.'/edit'))->with('success_course','แก้ไขข้อมูล '.$request['name'].' สำเร็จ');

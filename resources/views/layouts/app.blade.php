@@ -55,20 +55,20 @@ footer-menu {
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/course') }}">คอร์สเรียนออนไลน์</a></li>
-                    <li><a href="{{ url('/') }}">คอร์สสอนสด</a></li>
+                    <li><a href="{{ url('/course') }}"><i class="fa fa-graduation-cap"></i> คอร์สเรียนออนไลน์</a></li>
+                    <li><a href="{{ url('/') }}"><i class="fa fa-briefcase"></i> คอร์สสอนสด</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                    <li><a href="{{ url('/') }}">คู่มือใช้งาน</a></li>
-                    <li><a href="{{ url('/') }}">เกี่ยวกับเรา</a></li>
-                    <li><a href="{{ url('/') }}">ข่าวสาร</a></li>
-                    <li><a href="{{ url('/') }}">ติดต่อเรา</a></li>
+                    <li><a href="{{ url('/') }}"><i class="fa fa-book "></i> คู่มือใช้งาน</a></li>
+                    <li><a href="{{ url('/') }}"><i class="fa fa-info"></i> เกี่ยวกับเรา</a></li>
+                    <li><a href="{{ url('/') }}"><i class="fa fa-bullseye"></i> ข่าวสาร</a></li>
+                    <li><a href="{{ url('/') }}"><i class="fa fa-phone-square"></i> ติดต่อเรา</a></li>
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
+                        <li><a href="{{ url('/register') }}"><i class="fa fa-lock"></i> Register</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

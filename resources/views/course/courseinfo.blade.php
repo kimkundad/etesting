@@ -180,11 +180,11 @@ return "$strDay $strMonthThai $strYear";
                 </a>
                 <hr>
                 <span class="readingPrice">
-                                ฿ {{$objs->price_course}} บาท (ลดราคา 50%)
+                                ฿ {{$objs->price_course}} บาท (ลดราคา {{$objs->discount}})
                                   </span>
                 <hr>
                 <strong>จำนวนผู้จองคอร์สเรียน</strong>
-                <h4 style="color:red"><i class="fa fa-user"></i> 23</h4>
+                <h4 style="color:red"><i class="fa fa-user"></i> {{$count_course}}</h4>
               </div>
 
 
@@ -249,122 +249,167 @@ return "$strDay $strMonthThai $strYear";
                               <ul class="ap-commentlist clearfix">
 
 
-                                <li id="comment-1" class="kimkundad byuser comment-author-tarrence even thread-even depth-1 clearfix">
-                                  <!-- comment #10426 -->
-                                  <div class="clearfix">
-                                    <div class="ap-avatar ap-pull-left">
-                                      <a href="user_profile-2.html" title="">
-                                      <!-- TODO: OPTION - Avatar size -->
-                                      <img style="max-height:50px;" class="img-responsive avatar avatar-30 photo ap-dynamic-avatar"
-                                      src="{{url('assets/images/avatar/1483537975.png')}}"></a>
-                                    </div><!-- close .ap-avatar -->
-                                    <div class="ap-comment-content no-overflow">
-                                      <div class="ap-comment-header">
-                                        <a href="user_profile-2.html" class="ap-comment-author"> Shuvit Funsok</a>
-
-                                         - <a href="user_profile-2.html" class="ap-comment-time"><time>November 15, 2016</time></a>
 
 
+                                @foreach($comment_course as $comment)
+                                <li id="comment-id-{{$comment->c_id}}" class="kimkundad byuser comment-author-tarrence even thread-even depth-1 clearfix">
+                                                  <div class="clearfix">
+                                                    <div class="ap-avatar ap-pull-left">
+                                                      <a href="#" title="">
 
-                                       </div><!-- close .ap-comment-header -->
-                                      <div class="ap-comment-texts">
-                                        <p>อธิบายเข้าใจง่ายครับ ขอบคุณมากครับ++</p>
-                                      </div>
-                                                </div><!-- close .ap-comment-content -->
-                                  </div><!-- close #comment-* -->
-                                </li>
+                                                        @if($comment->provider == 'email')
+                                                        <img style="max-height:50px;" class="img-responsive avatar avatar-30 photo ap-dynamic-avatar"
+                                                         src="assets/images/avatar/{{$comment->avatar}}"></a>
+                                                        @else
+                                                        <img style="max-height:50px;" class="img-responsive avatar avatar-30 photo ap-dynamic-avatar"
+                                                         src="//{{$comment->avatar}}"></
+                                                         a>
+                                                        @endif
+                                                    </div>
+                                                    <div class="ap-comment-content no-overflow">
+                                                      <div class="ap-comment-header">
+                                                        <a href="user_profile-2.html" class="ap-comment-author"> {{$comment->name}}</a>
+                                                         - <a href="user_profile-2.html" class="ap-comment-time"><time><?php echo DateThai($comment->created_att); ?></time></a>
 
+                                                         @if ($comment->u_id != Auth::user()->id)
 
-
-
-
-
-
-
-                                <li id="comment-1" class="kimkundad byuser comment-author-tarrence even thread-even depth-1 clearfix">
-                                  <!-- comment #10426 -->
-                                  <div class="clearfix">
-                                    <div class="ap-avatar ap-pull-left">
-                                      <a href="user_profile-2.html" title="">
-                                      <!-- TODO: OPTION - Avatar size -->
-                                      <img style="max-height:50px;" class="img-responsive avatar avatar-30 photo ap-dynamic-avatar"
-                                      src="{{url('assets/images/avatar/1484149648.jpeg')}}"></a>
-                                    </div><!-- close .ap-avatar -->
-                                    <div class="ap-comment-content no-overflow">
-                                      <div class="ap-comment-header">
-                                        <a href="user_profile-2.html" class="ap-comment-author"> Shuvit Funsok</a>
-
-                                         - <a href="user_profile-2.html" class="ap-comment-time"><time>November 15, 2016</time></a>
-
-
-
-                                       </div><!-- close .ap-comment-header -->
-                                      <div class="ap-comment-texts">
-                                        <p>คอร์สดีแบบนี้เอาไป 5 ดาวเลย</p>
-                                      </div>
-                                                </div><!-- close .ap-comment-content -->
-                                  </div><!-- close #comment-* -->
-                                </li>
-
-
-
-
-                                <li id="comment-1" class="kimkundad byuser comment-author-tarrence even thread-even depth-1 clearfix">
-                                  <!-- comment #10426 -->
-                                  <div class="clearfix">
-                                    <div class="ap-avatar ap-pull-left">
-                                      <a href="user_profile-2.html" title="">
-                                      <!-- TODO: OPTION - Avatar size -->
-                                      <img style="max-height:50px;" class="img-responsive avatar avatar-30 photo ap-dynamic-avatar"
-                                       src="{{url('assets/images/avatar/1484042563.png')}}"></a>
-                                    </div><!-- close .ap-avatar -->
-                                    <div class="ap-comment-content no-overflow">
-                                      <div class="ap-comment-header">
-                                        <a href="user_profile-2.html" class="ap-comment-author"> Shuvit Funsok</a>
-
-                                         - <a href="user_profile-2.html" class="ap-comment-time"><time>November 15, 2016</time></a>
-
-
-
-                                       </div><!-- close .ap-comment-header -->
-                                      <div class="ap-comment-texts">
-                                        <p>อธิบายเข้าใจง่ายครับ ขอบคุณมากครับ++</p>
-                                      </div>
-                                                </div><!-- close .ap-comment-content -->
-                                  </div><!-- close #comment-* -->
-                                </li>
+                                                         @else
+                                                         <div class="pull-right">
+                                                           <a href="#" class="dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                           <i class="fa fa-cog"></i>
+                                                         </a>
+                                                         <ul class="dropdown-menu" style="top: inherit !important; min-width: 100px;" role="menu" aria-labelledby="dLabel">
+                                                          <li><a href="#" data-toggle="modal" data-target="#editer-{{$comment->c_id}}"><i class="fa fa-wrench"></i>  แก้ไข</a></li>
+                                                          <li><a href="#" data-toggle="modal" data-target="#myModal-{{$comment->c_id}}"><i class="fa fa-trash-o"></i> ลบทิ้ง</a></li>
+                                                         </ul>
+                                                         </div>
 
 
 
 
 
+                                                         <div class="modal fade" id="editer-{{$comment->c_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button> <h4 class="modal-title" id="myModalLabel">ทำการแก้ไข ?</h4>
+      </div>
+
+      <div class="panel-body">
+                        <div id="showalert2"></div>
+                        <div class="modal-wrapper">
+
+                      <form method="post" action="{{url('comment/'.$comment->c_id)}}" enctype="multipart/form-data">
+                          <div class="modal-text">
+                            <input type="hidden" name="_method" value="put">
+                            <input type="hidden" name="course_id" class="form-control" value="{{$objs->id}}">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+
+                              <textarea class="form-control" name="comment" rows="3">{{$comment->comment}}</textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <footer class="panel-footer" style="margin-top: 10px;">
+                        <div class="row">
+                          <div class="col-md-12 text-right">
+
+
+                            <button type="submit" class="btn btn-primary ">แก้ไข</button>
+                            <button class="btn btn-default modal-dismiss" data-dismiss="modal" aria-label="Close">ยกเลิก</button>
+
+                          </form>
+                          </div>
+
+                        </div>
+                      </footer>
+
+
+    </div>
+  </div>
+</div>
 
 
 
-                                <li id="comment-1" class="kimkundad byuser comment-author-tarrence even thread-even depth-1 clearfix">
-                                  <!-- comment #10426 -->
-                                  <div class="clearfix">
-                                    <div class="ap-avatar ap-pull-left">
-                                      <a href="user_profile-2.html" title="">
-                                      <!-- TODO: OPTION - Avatar size -->
-                                      <img style="max-height:50px;" class="img-responsive avatar avatar-30 photo ap-dynamic-avatar"
-                                       src="{{url('assets/images/avatar/1483537975.png')}}"></a>
-                                    </div><!-- close .ap-avatar -->
-                                    <div class="ap-comment-content no-overflow">
-                                      <div class="ap-comment-header">
-                                        <a href="user_profile-2.html" class="ap-comment-author"> Shuvit Funsok</a>
-
-                                         - <a href="user_profile-2.html" class="ap-comment-time"><time>November 15, 2016</time></a>
 
 
+                                                         <div class="modal fade bs-example-modal-sm" id="myModal-{{$comment->c_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                           <div class="modal-dialog modal-sm" role="document">
+                                                             <div class="modal-content">
 
-                                       </div><!-- close .ap-comment-header -->
-                                      <div class="ap-comment-texts">
-                                        <p>คอร์สดีแบบนี้เอาไป 5 ดาวเลย</p>
-                                      </div>
-                                                </div><!-- close .ap-comment-content -->
-                                  </div><!-- close #comment-* -->
-                                </li>
+                                                               <div class="modal-header">
+                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                   <span aria-hidden="true">×</span>
+                                                                 </button> <h4 class="modal-title" id="myModalLabel">ต้องการลบ ?</h4>
+                                                               </div>
+
+                                                               <div class="panel-body">
+                                                                                 <div id="showalert2"></div>
+                                                                                 <div class="modal-wrapper">
+
+                                                                                   <div class="modal-text">
+                                                                                     <h4>ต้องการลบความคิดเห็นนี้ ใช่ไหม ?</h4>
+                                                                                   </div>
+                                                                                 </div>
+                                                                               </div>
+
+                                                                               <footer class="panel-footer" style="margin-top: 10px;">
+                                                                                 <div class="row">
+                                                                                   <div class="col-md-12 text-right">
+                                                                                     <form method="post" action="{{url('comment/'.$comment->c_id)}}" enctype="multipart/form-data">
+
+                                                                                      <input type="hidden" name="_method" value="DELETE">
+                                                                                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                                                                     <button type="submit" class="btn btn-primary ">ลบ</button>
+                                                                                     <button class="btn btn-default modal-dismiss" data-dismiss="modal" aria-label="Close">ยกเลิก</button>
+
+                                                                                   </form>
+                                                                                   </div>
+                                                                                 </div>
+                                                                               </footer>
+
+
+                                                             </div>
+                                                           </div>
+                                                         </div>
+
+
+
+
+
+
+                                                         @endif
+
+                                                       </div>
+                                                      <div class="ap-comment-texts">
+                                                        <p>{{$comment->comment}}</p>
+                                                      </div></div>
+                                                  </div>
+                                                </li>
+                                @endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -375,6 +420,49 @@ return "$strDay $strMonthThai $strYear";
 
                               </ul>
                             </div>
+                            @if (Auth::guest())
+
+                            <div style="margin-top:40px;background: #fff none repeat scroll 0 0; border: 1px solid #eee; padding: 15px;">
+                              <p><i class="fa fa-lock"></i> โปรดทำการ <a href="{{url('login')}}">เข้าสู่ระบบ</a> หรือ <a href="{{url('register')}}">สมัครสมาชิก</a> เพื่อแสดงความคิดเห็น</p>
+                            </div>
+
+                            @else
+
+                            <div style="margin-top:40px;background: #fff none repeat scroll 0 0; border: 1px solid #eee; padding: 15px;">
+                              <div class="clearfix">
+                                <div class="ap-avatar ap-pull-left">
+                                  <a href="user_profile-2.html" title="">
+                                  <!-- TODO: OPTION - Avatar size -->
+                                  @if($objs->provider == 'email')
+                                  <img style="max-height:50px;" class="img-responsive avatar avatar-30 photo ap-dynamic-avatar"
+                                   src="assets/images/avatar/{{Auth::user()->avatar}}"></a>
+                                  @else
+                                  <img style="max-height:50px;" class="img-responsive avatar avatar-30 photo ap-dynamic-avatar"
+                                   src="//{{Auth::user()->avatar}}"></a>
+                                  @endif
+
+
+                                </div><!-- close .ap-avatar -->
+                                <form method="post" action="{{url('comment')}}" enctype="multipart/form-data">
+                                  <input type="hidden" name="_method" value="post">
+                                  <input type="hidden" name="course_id" class="form-control" value="{{$objs->id}}">
+                                  {{ csrf_field() }}
+                                <div class="ap-comment-content no-overflow">
+                                  <div class="ap-comment-header">
+                                    <a href="user_profile-2.html" class="ap-comment-author"> {{ Auth::user()->name }}</a>
+
+                                   </div><!-- close .ap-comment-header -->
+                                  <div class="ap-comment-texts">
+                                    <textarea class="form-control" name="comment" rows="3" style="width: 90%; margin-top:5px;"></textarea>
+                                  </div>
+                                  <div class="col-sm-12" style="margin-top:10px;"> <button type="submit" class="btn btn-primary pull-right">แสดงความคิดเห็น</button> </div>
+                                            </div><!-- close .ap-comment-content -->
+                                            </form>
+                              </div><!-- close #comment-* -->
+                            </div>
+
+
+                            @endif
 
                           </div>
                           </div>
