@@ -56,14 +56,14 @@ footer-menu {
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/course') }}"><i class="fa fa-graduation-cap"></i> คอร์สเรียนออนไลน์</a></li>
-                    <li><a href="{{ url('/') }}"><i class="fa fa-briefcase"></i> คอร์สสอนสด</a></li>
+                    <li><a href="{{ url('/course_teaching') }}"><i class="fa fa-briefcase"></i> คอร์สสอนสด</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     <li><a href="{{ url('/') }}"><i class="fa fa-book "></i> คู่มือใช้งาน</a></li>
-                    <li><a href="{{ url('/') }}"><i class="fa fa-info"></i> เกี่ยวกับเรา</a></li>
+                    <li><a href="{{ url('/about') }}"><i class="fa fa-info"></i> เกี่ยวกับเรา</a></li>
                     <li><a href="{{ url('/') }}"><i class="fa fa-bullseye"></i> ข่าวสาร</a></li>
                     <li><a href="{{ url('/') }}"><i class="fa fa-phone-square"></i> ติดต่อเรา</a></li>
                     @if (Auth::guest())

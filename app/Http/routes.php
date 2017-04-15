@@ -15,6 +15,7 @@
 
 Route::get('/', 'HomeController@home');
 Route::get('/course', 'HomeController@course');
+Route::get('/course_teaching', 'HomeController@Teaching');
 
 
 Route::get('/courseinfo/{id}', 'CourseinfoController@show');
@@ -24,6 +25,9 @@ Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
 Route::post('password/reset', 'Auth\PasswordController@reset');
 
+Route::get('/about', function () {
+    return view('about.index');
+});
 
 Route::get('/live', function () {
     return view('live.index');

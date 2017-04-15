@@ -57,6 +57,7 @@ class HomeController extends Controller
           'typecourses.*'
           )
           ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+          ->where('typecourses.id', '!=', 1)
           ->orderBy('A', 'desc')
           ->get();
 
@@ -64,5 +65,21 @@ class HomeController extends Controller
       return view('course.index', $data);
     }
 
+    public function Teaching()
+    {
+      $objs = DB::table('courses')
+          ->select(
+          'courses.*',
+          'courses.id as A',
+          'typecourses.*'
+          )
+          ->leftjoin('typecourses', 'typecourses.id', '=', 'courses.type_course')
+          ->where('typecourses.id', 1)
+          ->orderBy('A', 'desc')
+          ->get();
+
+      $data['objs'] = $objs;
+      return view('course.Teaching', $data);
+    }
 
 }
