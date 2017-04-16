@@ -65,7 +65,7 @@ footer-menu {
                     <li><a href="{{ url('/') }}"><i class="fa fa-book "></i> คู่มือใช้งาน</a></li>
                     <li><a href="{{ url('/about') }}"><i class="fa fa-info"></i> เกี่ยวกับเรา</a></li>
                     <li><a href="{{ url('/') }}"><i class="fa fa-bullseye"></i> ข่าวสาร</a></li>
-                    <li><a href="{{ url('/') }}"><i class="fa fa-phone-square"></i> ติดต่อเรา</a></li>
+                    <li><a href="{{ url('/contact') }}"><i class="fa fa-phone-square"></i> ติดต่อเรา</a></li>
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
                         <li><a href="{{ url('/register') }}"><i class="fa fa-lock"></i> Register</a></li>

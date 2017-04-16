@@ -29,6 +29,10 @@ Route::get('/about', function () {
     return view('about.index');
 });
 
+Route::get('/contact', function () {
+    return view('contact.index');
+});
+
 Route::get('/live', function () {
     return view('live.index');
 });
