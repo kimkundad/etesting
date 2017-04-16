@@ -30,6 +30,11 @@ Route::resource('/contact', 'ContactController');
 Route::get('/contact_success', function () {
     return view('contact.contact_success');
 });
+
+Route::get('/about', function () {
+    return view('about.index');
+});
+
 Route::get('/live', function () {
     return view('live.index');
 });
