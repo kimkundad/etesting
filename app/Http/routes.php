@@ -25,14 +25,11 @@ Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
 Route::post('password/reset', 'Auth\PasswordController@reset');
 
-Route::get('/about', function () {
-    return view('about.index');
-});
+Route::resource('/contact', 'ContactController');
 
-Route::get('/contact', function () {
-    return view('contact.index');
+Route::get('/contact_success', function () {
+    return view('contact.contact_success');
 });
-
 Route::get('/live', function () {
     return view('live.index');
 });

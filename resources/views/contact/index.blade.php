@@ -61,36 +61,67 @@ i{
                     <div class="row">
 
                       <div class="col-md-12">
-                        <form>
+                        <form action="{{url('/contact')}}" method="post" enctype="multipart/form-data" name="product">
+                          <input type="hidden" name="_method" value="post">
+                          {{ csrf_field() }}
                           <div class="row" style=" padding-right: 15px; ">
 
                             <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                               <label >ชื่อ-นามสกุล <span class="text-green">*</span></label>
-                              <input type="text" class="form-control" >
+                              <input type="text" class="form-control" name="name">
+                              @if ($errors->has('name'))
+                                  <span class="help-block">
+                                      <strong>ใส่ ชื่อ-นามสกุล ด้วยนะ</strong>
+                                  </span>
+                              @endif
                             </div>
                             </div>
 
                             <div class="col-md-4">
-                            <div class="form-group">
-                              <label >อีเมล <span class="text-green">*</span></label>
-                              <input type="email" class="form-control">
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                              <label >อีเมล์ <span class="text-green">*</span></label>
+                              <input type="email" class="form-control" name="email">
+                              @if ($errors->has('email'))
+                                  <span class="help-block">
+                                      <strong>ใส่ อีเมล์ ด้วยนะ</strong>
+                                  </span>
+                              @endif
                             </div>
                             </div>
 
                             <div class="col-md-4">
                             <div class="form-group">
                               <label >เบอร์โทรศัพท์</label>
-                              <input type="text" class="form-control" >
+                              <input type="text" class="form-control" name="phone">
                             </div>
                             </div>
 
                             <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                              <div class="g-recaptcha" data-sitekey="6LejQB0UAAAAAPIUXiJgK8M7HxvRTLz4Cf7sMrDe"></div>
+                              @if ($errors->has('g-recaptcha-response'))
+                                  <span class="help-block">
+                                      <strong>คุณเป็นหุ่นยนต์หรือป่าวหล่ะ!</strong>
+                                  </span>
+                              @endif
+                            </div>
+                            </div>
+
+                            <div class="col-md-12">
+                            <div class="form-group{{ $errors->has('detail') ? ' has-error' : '' }}">
                               <label >ข้อความ <span class="text-green">*</span></label>
-                              <textarea class="form-control" rows="6" placeholder="พิมพ์ข้อความที่นี่..."></textarea>
+                              <textarea class="form-control" rows="6" placeholder="พิมพ์ข้อความที่นี่..." name="detail"></textarea>
+                              @if ($errors->has('detail'))
+                                  <span class="help-block">
+                                      <strong>ใส่ข้อความติดต่อด้วยนะ!</strong>
+                                  </span>
+                              @endif
                             </div>
                             </div>
+
+
+
 
                             <div class="col-md-12">
                             <button type="submit"  class="btn btn-green">ส่งข้อความ</button>
@@ -143,3 +174,9 @@ i{
     </div>
 </div>
 @endsection
+
+@section('scripts')
+<script src='https://www.google.com/recaptcha/api.js?hl=th'></script>
+
+
+@stop('scripts')
