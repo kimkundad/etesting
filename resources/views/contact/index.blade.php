@@ -99,7 +99,8 @@ i{
 
                             <div class="col-md-12">
                             <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
-                              <div class="g-recaptcha" data-sitekey="6LejQB0UAAAAAPIUXiJgK8M7HxvRTLz4Cf7sMrDe"></div>
+                              
+                              <div class="g-recaptcha" data-sitekey="6LccQR0UAAAAAI32GUP3mIFYBTThZVtHN1uYGitB"></div>
                               @if ($errors->has('g-recaptcha-response'))
                                   <span class="help-block">
                                       <strong>คุณเป็นหุ่นยนต์หรือป่าวหล่ะ!</strong>
