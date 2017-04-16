@@ -79,7 +79,7 @@ class HomeController extends Controller
           ->get();
 
       $data['objs'] = $objs;
-      return view('course.Teaching', $data);
+      return view('course.teaching', $data);
     }
 
 }
