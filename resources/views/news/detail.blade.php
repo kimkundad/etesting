@@ -112,18 +112,51 @@ ol, ul, li {
   }
 
 }
-.s-det{
-  border: 1px solid #D1D1D1;
-  padding: 5px 10px;
-  margin-right: 5px;
+.s-det {
+    font-size: 12px;
+    border: 1px solid #D1D1D1;
+    padding: 2px 4px;
+    margin-right: 5px;
+    border-radius: 5px;
+    color:#000;
+        background: #FFECBA;
 }
 .box-detail{
-  background: #ffffff;
+  background: #fff3d3;
     border: 1px solid #38921b;
     margin-bottom: 10px;
-        margin-top: 30px;
-        padding: 10px;
+
+        padding: 0px;
         border-radius: 5px;
+}
+.content-title-box {
+  background-color: #FED943;
+    color: #993100;
+    position: relative;
+    padding: 5px 15px;
+    font-weight: bold;
+
+    margin: 0px;
+    margin-bottom: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.node-content{
+  margin-top: 15px;
+  margin-left: 10px;
+margin-right: 10px;
+}
+.sticky-badge {
+    position: absolute;
+    background: url('{{url('assets/image/border-featured.png')}}') no-repeat;
+    top: -3px;
+    right: -3px;
+    width: 64px;
+    height: 64px;
 }
 </style>
 
@@ -157,11 +190,21 @@ return "$strDay $strMonthThai $strYear";
           <div class="col-md-9 newss" style="">
 
             <div class="box-detail">
-              <h4 style="margin-bottom: 20px;">{{$objs->title_blog}}</h4>
-              <span class="s-det"><i class="fa fa-user"></i> by : admin</span>
-              <span class="s-det"><i class="fa fa-clock-o"></i> <?php echo DateThai($objs->created_at); ?></span>
-              <br><br>
-              {!! $objs->detail_blog !!}
+              <div class="content-title-box">
+              <h4 style="margin-bottom: 5px; margin-top: 5px; background-color: #FED943; color: #993100;">{{$objs->title_blog}}</h4>
+              <div class="sticky-badge"></div>
+            </div>
+
+              <div class="node-content">
+
+                <span class="s-det"><i class="fa fa-user"></i> by : admin</span>
+                <span class="s-det"><i class="fa fa-clock-o"></i> <?php echo DateThai($objs->created_at); ?></span>
+                <span class="s-det"><i class="fa fa-child"></i> view : {{$objs->view}}</span>
+                <br><br><img class="img-responsive" src="{{url('assets/blog/'.$objs->image)}}">
+                {!! $objs->detail_blog !!}
+              </div>
+
+
             </div>
 
 

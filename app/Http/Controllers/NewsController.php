@@ -18,6 +18,12 @@ class NewsController extends Controller
   }
   public function show($id)
   {
+
+    $package = blog::find($id);
+    $package->view += 1;
+    $package->save();
+
+
     $objs = blog::find($id);
     $data['objs'] = $objs;
     return view('news.detail',$data);
