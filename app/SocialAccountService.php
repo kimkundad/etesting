@@ -25,13 +25,32 @@ class SocialAccountService
 
             if (!$user) {
 
-                $user = User::create([
-                    'email' => $providerUser->getEmail(),
-                    'name' => $providerUser->getName(),
-                    'position' => 'student',
-                    'avatar' => 'graph.facebook.com/'.$providerUser->getId().'/picture?width=300&height=300',
-                    'provider' => 'facebook'
-                ]);
+
+
+              if($providerUser->getEmail() != NULL){
+
+                          $user = User::create([
+                              'email' => $providerUser->getEmail(),
+                              'name' => $providerUser->getName(),
+                              'position' => 'student',
+                              'avatar' => 'graph.facebook.com/'.$providerUser->getId().'/picture?width=300&height=300',
+                              'provider' => 'facebook'
+                          ]);
+          		}else{
+
+                      		$user = User::create([
+                      		    'email' => $providerUser->getId(),
+                              'name' => $providerUser->getName(),
+                              'position' => 'student',
+                              'avatar' => 'graph.facebook.com/'.$providerUser->getId().'/picture?width=300&height=300',
+                              'provider' => 'facebook'
+                          ]);
+
+          }
+
+
+
+
             }
 
             $account->user()->associate($user);

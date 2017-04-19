@@ -67,6 +67,13 @@ html.no-overflowscrolling .nano > .nano-pane > .nano-slider {
 										</a>
 									</li>
 
+                  <li {{ (Request::is('admin/blog*') ? 'class=nav-expanded' : '') }} >
+										<a href="{{url('admin/blog/')}}" >
+											<i class="fa fa-code" aria-hidden="true"></i>
+											<span>ข่าวสาร</span>
+										</a>
+									</li>
+
 									<li {{ (Request::is('admin/setting*') ? 'class=nav-expanded' : '') }} >
 										<a href="{{url('admin/setting')}}" >
 											<i class="fa fa-cog " aria-hidden="true"></i>

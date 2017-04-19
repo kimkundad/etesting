@@ -31,6 +31,10 @@ Route::get('/contact_success', function () {
     return view('contact.contact_success');
 });
 
+Route::get('/news', 'NewsController@index');
+Route::get('/news/{id}', 'NewsController@show');
+
+
 Route::get('/about', function () {
     return view('about.index');
 });
@@ -87,11 +91,13 @@ Route::group(['middleware' => 'adminRole'], function () {
 
     Route::resource('admin/dashboard', 'DashboardController');
     Route::resource('admin/user', 'UserController');
-
+    Route::resource('admin/blog', 'BlogController');
     Route::resource('admin/teacher', 'TeacherController');
     Route::resource('admin/student', 'StudentController');
     Route::resource('admin/course', 'CourseController');
     Route::resource('admin/typecourse', 'TypecourseController');
+
+    Route::post('admin/file/posts', 'UploadFileController@imagess');
 
     Route::resource('admin/bank', 'BankController');
     Route::resource('admin/order_shop', 'OrderController');

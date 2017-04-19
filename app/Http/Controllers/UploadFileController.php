@@ -46,26 +46,26 @@ class UploadFileController extends Controller
 
     public function imagess(Request $request) {
 
-        $data = array('image' => $request->file('files'));
-        $rules = array(
-            'image' => 'required|max:'.MAX_FILE_SIZE,
-            );
+          $data = array('image' => $request->file('files'));
+          $rules = array(
+              'image' => 'required|max:5048',
+              );
 
-        $validator = Validator::make($data,$rules);
+          $validator = Validator::make($data,$rules);
 
-        if($validator->fails()) {
-            return Response::json($validator->errors()->first('image'), 400);
-        }
+          if($validator->fails()) {
+              return Response::json($validator->errors()->first('image'), 400);
+          }
 
-        $file = $request->file('files');
-        $destinationPath = 'uploads'; // upload path
-        $extension = $file->getClientOriginalExtension(); // getting image extension
-        $fileName = sha1(time().time()).".{$extension}";
-        $file->move($destinationPath, $fileName); // uploading file to given path
+          $file = $request->file('files');
+          $destinationPath = 'assets/blog'; // upload path
+          $extension = $file->getClientOriginalExtension(); // getting image extension
+          $fileName = sha1(time().time()).".{$extension}";
+          $file->move($destinationPath, $fileName); // uploading file to given path
 
-        return $fileName;
+          return $fileName;
 
-    }
+      }
 
 
     public function file_upload(Request $request) {

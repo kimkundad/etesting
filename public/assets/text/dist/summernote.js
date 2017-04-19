@@ -6730,13 +6730,13 @@
 			var data = new FormData();
 		    data.append('files', files[0]);
 		    $.ajax({
-		        url: 'http://localhost/treetop/admin/file/posts',
+		        url: 'http://www.learnsabuy.com/admin/file/posts',
 		        method: 'POST',
 		        data: data,
 		        processData: false,
 		        contentType: false,
 		        success: function(response) {
-              var image1 = 'http://localhost/treetop/assets/images/all_image/'+response;
+              var image1 = 'http://www.learnsabuy.com/assets/blog/'+response;
 		          $editor.summernote('insertImage', image1);
 		        }
 		    });
