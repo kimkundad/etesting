@@ -230,7 +230,7 @@
           <img data-view="user_avatar_690" alt="" src="assets/images/avatar/{{$objs->avatar}}"
           class="avatar avatar-40 photo" width="40" height="40" data-pin-nopin="true">
           @else
-          
+
           <img data-view="user_avatar_690" alt="" src="assets/images/avatar/blank_avatar_240x240.gif"
           class="avatar avatar-40 photo" width="40" height="40" data-pin-nopin="true">
           @endif
@@ -266,6 +266,7 @@
 
         <li><a href="{{url('user_confirm')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-user-secret"></i> ยืนยันตัวตน</a></li>
         <li><a href="{{url('user_course')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-graduation-cap"></i> คอร์สเรียน</a></li>
+        <li><a href="{{url('e-testing')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-question-circle"></i> แบบฝึกหัด</a></li>
 
         <li><a href="{{url('user_ans')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-commenting-o"></i> คำถามของฉัน</a></li>
 

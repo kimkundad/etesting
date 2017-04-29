@@ -170,11 +170,141 @@ return "$strDay $strMonthThai $strYear";
 
     {{ $objs->links() }}
           </div>
+
+
+
+
+
+
+
+
+
+          <style>
+          .widget {
+            
+
+              -webkit-box-shadow: 0 0 5px 0 #e2e3e4;
+              -moz-box-shadow: 0 0 5px 0 #e2e3e4;
+              box-shadow: 0 0 5px 0 #e2e3e4;
+              position: relative;
+              margin-bottom: 30px;
+              padding: 15px 12px 12px;
+          }
+          .widget-title {
+              padding-bottom: 0px;
+                  color: #2f3c4e;
+          }
+          .widget-title {
+              font-size: 16px;
+              font-weight: bold;
+              padding-bottom: 10px;
+              border-bottom: 2px solid #ecedee;
+              margin-bottom: 20px;
+              line-height: 28px;
+              position: relative;
+          }
+          .tabs li {
+    float: left;
+    margin: 0 20px 10px 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+  .widget li {
+    display: block;
+    list-style: none;
+    color: #4b525c;
+    border-bottom: 1px solid #ecedee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    width: 100%;
+  }
+  .tabs li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    background-color: #0b58b1;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+  .widget-posts-img, .widget-comments-img {
+    float: left;
+    position: relative;
+    margin-right: 10px;
+    overflow: hidden;
+    text-align: center;
+    height: 60px;
+    width: 60px;
+  }
+  .widget-posts-content, .widget-comments-content {
+    overflow: hidden;
+    height: 100%;
+  }
+  .widget .widget-posts-content>a {
+    line-height: 0.5em;
+    color: #2f3c4e;
+    text-decoration: none;
+  }
+  .widget .widget-posts-content>a:hover {
+    line-height: 0.5em;
+    color: #337ab7;
+    text-decoration: none;
+  }
+  .widget-posts-content span {
+    display: block;
+    margin-bottom: 1px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #9ba1a8;
+  }
+          </style>
+
+
+
+
+
           <div class="col-md-3" style="    margin-top: 0px;">
-            <div>
-              <img class="img-responsive" src="http://localhost/enihongo/public/assets/image/14610482951461048307l.jpg">
+
+            <div class="widget">
+              <div class="widget-title">
+                <ul class="tabs" style="margin-bottom: 0px;">
+                  <li class="tab"><a href="#" class="current">Popular</a></li>
+                  </ul>
+                </div>
+
+
+
+
+
+                <div class="widget-posts">
+                  <ul>
+
+                    @if(isset($popu))
+
+                    @foreach($popu as $order)
+                    <li class="">
+                    <div class="widget-posts-img">
+                    <a href="#">
+
+                    <img alt="{{$order->title_blog}}" src="{{url('assets/blog/'.$order->image)}}" class="img-responsive" style="height:65px; width:65px; overflow: hidden;">
+                    </a>
+                    </div>
+                    <div class="widget-posts-content">
+                    <a href="#">{{$order->title_blog}}</a>
+                    <span><i class="fa fa-user"></i> BY : admin</span>
+                    <span><i class="fa fa-clock-o"></i> <?php echo DateThai($order->created_at); ?></span>
+                    </div>
+                    </li>
+                    @endforeach
+                    @endif
+
+                    </ul>
+                    </div>
             </div>
           </div>
+
+
+
           </div>
 
         </div>

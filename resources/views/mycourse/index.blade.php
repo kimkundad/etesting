@@ -272,7 +272,7 @@ return "$strDay $strMonthThai $strYear";
 
         <li><a href="{{url('user_confirm')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-user-secret"></i> ยืนยันตัวตน</a></li>
         <li><a href="{{url('user_course')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="ap-questions-featured fa fa-graduation-cap"></i> คอร์สเรียน</a></li>
-
+        <li><a href="{{url('e-testing')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-question-circle"></i> แบบฝึกหัด</a></li>
         <li><a href="{{url('user_ans')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-commenting-o"></i> คำถามของฉัน</a></li>
 
         <li><a href="{{url('user_rep')}}" class="ap-user-menu-orders apicon-shopping-cart"><i class="fa fa-trophy"></i> ชื่อเสียงของฉัน</a></li>

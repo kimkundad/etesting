@@ -42,7 +42,7 @@ class OrderController extends Controller
         ->leftjoin('users', 'users.id', '=', 'submitcourses.user_id')
         ->leftjoin('courses', 'courses.id', '=', 'submitcourses.course_id')
         ->leftjoin('banks', 'banks.id', '=', 'submitcourses.bank_id')
-        ->where('submitcourses.status', '!=', 0)
+        ->where('submitcourses.status', '=', 1)
         ->get();
 
       $data['objs'] = $coursess;

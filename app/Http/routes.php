@@ -95,6 +95,17 @@ Route::group(['middleware' => 'adminRole'], function () {
     Route::resource('admin/teacher', 'TeacherController');
     Route::resource('admin/student', 'StudentController');
     Route::resource('admin/course', 'CourseController');
+    Route::resource('admin/play_student', 'Course_studentController');
+
+
+    Route::post('admin/updatesort/{id}', 'QuestionController@updatesort');
+    Route::get('admin/examination/{id}/edit', 'CourseController@examination');
+    Route::post('admin/store2', 'QuestionController@store2');
+    Route::post('admin/deleteq/{id}', 'QuestionController@deleteq');
+    Route::resource('admin/category', 'CategoryController');
+
+    Route::resource('admin/example', 'ExampleController');
+
     Route::resource('admin/typecourse', 'TypecourseController');
 
     Route::post('admin/file/posts', 'UploadFileController@imagess');
@@ -107,5 +118,7 @@ Route::group(['middleware' => 'adminRole'], function () {
     });
 
     Route::get('local/.env');
+
+    Route::resource('admin/ans', 'AnsController');
 
 });

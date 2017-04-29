@@ -46,7 +46,9 @@ html.no-overflowscrolling .nano > .nano-pane > .nano-slider {
 										</a>
 									</li>
 									<li {{ (Request::is('admin/course*') ? 'class=nav-expanded' : '') }}
-                  {{ (Request::is('admin/typecourse*') ? 'class=nav-expanded' : '') }}>
+                  {{ (Request::is('admin/typecourse*') ? 'class=nav-expanded' : '') }}
+                  {{ (Request::is('admin/examination/*') ? 'class=nav-expanded' : '') }}
+                  {{ (Request::is('admin/category*') ? 'class=nav-expanded' : '') }}>
 										<a href="{{url('admin/course/')}}" >
 											<i class="fa fa-cube" aria-hidden="true"></i>
 											<span>คอร์สเรียน</span>
@@ -57,6 +59,13 @@ html.no-overflowscrolling .nano > .nano-pane > .nano-slider {
 										<a href="{{url('admin/order_shop/')}}" >
 											<i class="fa fa-external-link" aria-hidden="true"></i>
 											<span>รายการสั่งซื้อใหม่</span>
+										</a>
+									</li>
+
+                  <li {{ (Request::is('admin/play_student*') ? 'class=nav-expanded' : '') }} >
+										<a href="{{url('admin/play_student/')}}" >
+											<i class="fa fa-address-book-o" aria-hidden="true"></i>
+											<span>คอร์ส-นักเรียน</span>
 										</a>
 									</li>
 
@@ -71,6 +80,13 @@ html.no-overflowscrolling .nano > .nano-pane > .nano-slider {
 										<a href="{{url('admin/blog/')}}" >
 											<i class="fa fa-code" aria-hidden="true"></i>
 											<span>ข่าวสาร</span>
+										</a>
+									</li>
+
+                  <li {{ (Request::is('admin/example*') ? 'class=nav-expanded' : '') }}>
+										<a href="{{url('admin/example/')}}" >
+											<i class="fa fa-question-circle" aria-hidden="true"></i>
+											<span>แบบฝึกหัด</span>
 										</a>
 									</li>
 

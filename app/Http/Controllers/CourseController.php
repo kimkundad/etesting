@@ -11,6 +11,10 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\DB;
 use Excel;
 use File;
+use App\question;
+use App\option;
+use App\example;
+use App\category;
 
 class CourseController extends Controller
 {
@@ -23,8 +27,10 @@ class CourseController extends Controller
     {
         $objs = DB::table('courses')
             ->select(
-            'courses.*'
+            'courses.*',
+            'examples.id as e_id'
             )
+            ->leftjoin('examples', 'examples.course_id', '=', 'courses.id')
             ->get();
 
         $course = typecourses::all();
@@ -70,7 +76,8 @@ class CourseController extends Controller
            'detail' => 'required',
            'start_course' => 'required',
            'end_course' => 'required',
-           'discount' => 'required'
+           'discount' => 'required',
+           'code_course' => 'required'
        ]);
 
 
@@ -98,6 +105,7 @@ class CourseController extends Controller
       $obj->day_course = $request['day_course'];
       $obj->image_course = $input['imagename'];
       $obj->discount = $request['discount'];
+      $obj->code_course = $request['code_course'];
       $obj->save();
 
       return redirect(url('admin/course/'))->with('success_course','เพิ่มข้อมูล '.$request['name'].' สำเร็จ');
@@ -112,7 +120,31 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        //example
+        $objs = DB::table('examples')
+            ->select(
+            'examples.*',
+            'examples.id as e_id',
+            'courses.*',
+            'courses.id as c_id',
+            'categories.*'
+            )
+            ->leftjoin('courses', 'examples.course_id', '=', 'courses.id')
+            ->leftjoin('categories', 'examples.category_id', '=', 'categories.id')
+            ->where('examples.id', $id)
+            ->get();
+
+
+            foreach ($objs as $obj) {
+
+                $options = DB::table('questions')->where('category_id',$obj->e_id)->count();
+                $obj->options = $options;
+            }
+
+            //dd($objs);
+            $data['objs'] = $objs;
+            $data['datahead'] = "แบบฝึกหัดทั้งหมด";
+            return view('admin.course.example', $data);
     }
 
     /**
@@ -121,6 +153,65 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+     public function examination($id)
+    {
+
+
+      $get_q = DB::table('questions')
+          ->select(
+          'questions.*'
+          )
+          ->where('questions.category_id', $id)
+          ->orderBy('order_sort', 'asc')
+          ->get();
+      //dd($get_q);
+      $data['get_q'] = $get_q;
+
+        $objs = DB::table('courses')
+            ->select(
+            'courses.*',
+            'questions.*',
+            'questions.name_questions'
+            )
+            ->Join('questions', 'courses.id', '=', 'questions.category_id')
+            ->where('courses.id', $id)->orderBy('order_sort', 'asc')->get();
+            //->Join('options', 'questions.id_questions', '=', 'options.question_id')
+            //->where('categorys.id_category', $id)
+            //->get();
+
+        $objss = DB::table('courses')
+            ->select(
+            'courses.*'
+            )
+            ->where('courses.id', $id)
+            ->first();
+
+        foreach ($objs as $obj) {
+            $optionsRes = [];
+            $options = DB::table('options')->where('question_id',$obj->id_questions)->get();
+            foreach ($options as $option) {
+                $optionsRes[] = $option;
+            }
+            $obj->options = $optionsRes;
+
+        }
+
+       // dd($objs);
+
+        $data['url'] = url('admin/examination/'.$id);
+        $data['method'] = "put";
+        $data['objs'] = $objs;
+        $data['objss'] = $objss;
+        $data['header'] = "จัดการแบบสอบถาม";
+        return view('admin.course.examination', $data);
+    }
+
+
+
+
+
     public function edit($id)
     {
       $course = typecourses::all();
@@ -160,7 +251,8 @@ class CourseController extends Controller
                'detail' => 'required',
                'start_course' => 'required',
                'end_course' => 'required',
-               'discount' => 'required'
+               'discount' => 'required',
+               'code_course' => 'required'
            ]);
 
 
@@ -188,6 +280,7 @@ class CourseController extends Controller
            $obj->day_course = $request['day_course'];
            $obj->image_course = $input['imagename'];
            $obj->discount = $request['discount'];
+           $obj->code_course = $request['code_course'];
            $obj->save();
 
            return redirect(url('admin/course/'.$id.'/edit'))->with('success_course','แก้ไขข้อมูล '.$request['name'].' สำเร็จ');
@@ -226,6 +319,7 @@ class CourseController extends Controller
            $obj->time_course = $request['time_course'];
            $obj->day_course = $request['day_course'];
            $obj->discount = $request['discount'];
+           $obj->code_course = $request['code_course'];
            $obj->save();
 
            return redirect(url('admin/course/'.$id.'/edit'))->with('success_course','แก้ไขข้อมูล '.$request['name'].' สำเร็จ');
@@ -264,6 +358,7 @@ class CourseController extends Controller
            $obj->day_course = $request['day_course'];
            $obj->image_course = $input['imagename'];
            $obj->discount = $request['discount'];
+           $obj->code_course = $request['code_course'];
            $obj->save();
 
            return redirect(url('admin/course/'.$id.'/edit'))->with('success_course','แก้ไขข้อมูล '.$request['name'].' สำเร็จ');
@@ -294,6 +389,7 @@ class CourseController extends Controller
            $obj->time_course = $request['time_course'];
            $obj->day_course = $request['day_course'];
            $obj->discount = $request['discount'];
+           $obj->code_course = $request['code_course'];
            $obj->save();
 
            return redirect(url('admin/course/'.$id.'/edit'))->with('success_course','แก้ไขข้อมูล '.$request['name'].' สำเร็จ');

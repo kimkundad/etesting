@@ -1,6 +1,16 @@
 
 @extends('layouts.app')
 @section('stylesheet')
+
+<!-- Facebook-->
+<meta property="fb:app_id"          content="1512869072370249" />
+<meta property="og:type"            content="article" />
+<meta property="og:url"             content="{{url('news/'.$objs->id)}}" />
+<meta property="og:title"           content="{{$objs->title_blog}}" />
+<meta property="og:image"           content="{{url('assets/blog/'.$objs->image)}}" />
+<meta property="og:description"    content="<?=mb_substr(strip_tags($objs->detail_blog),0,200,'UTF-8')?>" />
+
+
 <link href="{{url('assets/css/select-project.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{url('assets/css/confirm.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{url('assets/bootstrap-sweetalert-master/dist/sweetalert.css')}}" rel="stylesheet" type="text/css" />
@@ -8,6 +18,9 @@
 @section('content')
 
 <style>
+body{
+      background: #e9e9e9;
+}
 .text-green{
       color: #038206;
 }
@@ -88,7 +101,7 @@ font-size: 13px;
 color: #6d7683;
 }
 ol, ul, li {
-    list-style: inside;
+
         -webkit-padding-start: 0px;
 }
 .block-recent-1 li {
@@ -107,10 +120,16 @@ ol, ul, li {
 @media only screen and (min-width: 768px)
 {
    .newss{
-      padding-right: 35px;
-      padding-left: 35px;
+      padding-right: 5px;
+      padding-left: 15px;
   }
 
+}
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #ce781f;
 }
 .s-det {
     font-size: 12px;
@@ -122,8 +141,8 @@ ol, ul, li {
         background: #FFECBA;
 }
 .box-detail{
-  background: #fff3d3;
-    border: 1px solid #38921b;
+  background: #ffffff;
+    border: 1px solid #ce781f;
     margin-bottom: 10px;
 
         padding: 0px;
@@ -149,6 +168,7 @@ ol, ul, li {
   margin-top: 15px;
   margin-left: 10px;
 margin-right: 10px;
+margin-bottom: 10px;
 }
 .sticky-badge {
     position: absolute;
@@ -157,6 +177,13 @@ margin-right: 10px;
     right: -3px;
     width: 64px;
     height: 64px;
+}
+.fb_iframe_widget {
+    margin-right: 5px;
+    float: left;
+    margin-top: 2px;
+    display: block;
+    /* position: relative; */
 }
 </style>
 
@@ -187,7 +214,7 @@ return "$strDay $strMonthThai $strYear";
           <hr>
 
           <div class="row">
-          <div class="col-md-9 newss" style="">
+          <div class="col-md-8 newss" style="">
 
             <div class="box-detail">
               <div class="content-title-box">
@@ -201,7 +228,16 @@ return "$strDay $strMonthThai $strYear";
                 <span class="s-det"><i class="fa fa-clock-o"></i> <?php echo DateThai($objs->created_at); ?></span>
                 <span class="s-det"><i class="fa fa-child"></i> view : {{$objs->view}}</span>
                 <br><br><img class="img-responsive" src="{{url('assets/blog/'.$objs->image)}}">
+                <br>
                 {!! $objs->detail_blog !!}
+                <br>
+
+                <div class="fb-like" data-href="{{url('news/'.$objs->id)}}" style=" margin-bottom:-10px;" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                <!-- วางแท็กนี้ในตำแหน่งที่คุณต้องการให้ ปุ่ม +1 ปรากฏ -->
+                <div class="g-plusone" data-annotation="inline" data-width="300" ></div>
+
+                <div style="float:left; margin-right: 10px;" class="line-it"><a href="#"><img src="{{url('assets/image/linebutton.png')}}" width="76px" height="20px" alt="LINE it!"></a></div>
+                <br>
               </div>
 
 
@@ -209,7 +245,126 @@ return "$strDay $strMonthThai $strYear";
 
 
           </div>
-          <div class="col-md-3" style="    margin-top: 0px;">
+
+          <style>
+          .widget {
+              background-color: #FFF;
+              border-bottom: 1px solid #d3d5d7;
+              -webkit-box-shadow: 0 0 5px 0 #e2e3e4;
+              -moz-box-shadow: 0 0 5px 0 #e2e3e4;
+              box-shadow: 0 0 5px 0 #e2e3e4;
+              position: relative;
+              margin-bottom: 30px;
+              padding: 15px 12px 12px;
+          }
+          .widget-title {
+              padding-bottom: 0px;
+                  color: #2f3c4e;
+          }
+          .widget-title {
+              font-size: 16px;
+              font-weight: bold;
+              padding-bottom: 10px;
+              border-bottom: 2px solid #ecedee;
+              margin-bottom: 20px;
+              line-height: 28px;
+              position: relative;
+          }
+          .tabs li {
+    float: left;
+    margin: 0 20px 10px 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+.widget li {
+    display: block;
+    list-style: none;
+    color: #4b525c;
+    border-bottom: 1px solid #ecedee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    width: 100%;
+}
+.tabs li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    background-color: #0b58b1;
+    padding: 0 10px;
+    font-size: 14px;
+}
+.widget-posts-img, .widget-comments-img {
+    float: left;
+    position: relative;
+    margin-right: 10px;
+    overflow: hidden;
+    text-align: center;
+    height: 60px;
+    width: 60px;
+}
+.widget-posts-content, .widget-comments-content {
+    overflow: hidden;
+    height: 100%;
+}
+.widget .widget-posts-content>a {
+    line-height: 0.5em;
+    color: #2f3c4e;
+    text-decoration: none;
+}
+.widget .widget-posts-content>a:hover {
+    line-height: 0.5em;
+    color: #337ab7;
+    text-decoration: none;
+}
+.widget-posts-content span {
+    display: block;
+    margin-bottom: 1px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #9ba1a8;
+}
+          </style>
+          <div class="col-md-4" style="    margin-top: 0px;">
+
+            <div class="widget">
+              <div class="widget-title">
+                <ul class="tabs" style="margin-bottom: 0px;">
+                  <li class="tab"><a href="#" class="current">Popular</a></li>
+                  </ul>
+                </div>
+
+
+                <div class="widget-posts">
+                  <ul>
+
+                    @if(isset($popu))
+
+                    @foreach($popu as $order)
+                    <li class="">
+                    <div class="widget-posts-img">
+                    <a href="#">
+
+                    <img alt="{{$order->title_blog}}" src="{{url('assets/blog/'.$order->image)}}" class="img-responsive" style="height:65px; width:65px; overflow: hidden;">
+                    </a>
+                    </div>
+                    <div class="widget-posts-content">
+                    <a href="#">{{$order->title_blog}}</a>
+                    <span><i class="fa fa-user"></i> BY : admin</span>
+                    <span><i class="fa fa-clock-o"></i> <?php echo DateThai($order->created_at); ?></span>
+                    </div>
+                    </li>
+                    @endforeach
+                    @endif
+
+                    </ul>
+                    </div>
+            </div>
+
+
+
+
+
             <div>
               <img class="img-responsive" src="http://localhost/enihongo/public/assets/image/14610482951461048307l.jpg">
             </div>
@@ -226,9 +381,18 @@ return "$strDay $strMonthThai $strYear";
 @section('scripts')
 <script src="{{url('assets/bootstrap-sweetalert-master/dist/sweetalert.js')}}"></script>
 
-<script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.9&appId=206036876527614";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-  //  swal("ส่งข้อความสำเร็จ!", "ข้อความถูกส่งไปยังครูพี่โฮมเรียบร้อยแล้ว!", "success")
+<!-- วางแท็กนี้ในส่วนหัวหรือก่อนแท็กปิดของเนื้อความ -->
+<script src="https://apis.google.com/js/platform.js" async defer>
+  {lang: 'th'}
+</script>
 
-  </script>
 @stop('scripts')

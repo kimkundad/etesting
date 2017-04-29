@@ -13,6 +13,16 @@ class NewsController extends Controller
   {
       $objs = blog::paginate(12);
       $data['objs'] = $objs;
+
+      $popu = DB::table('blogs')
+        ->select(
+           'blogs.*',
+           'blogs.image'
+           )
+        ->orderBy('view', 'desc')
+        ->limit(6)
+        ->get();
+        $data['popu'] = $popu;
       //dd($objs);
       return view('news.index',$data);
   }
@@ -23,6 +33,19 @@ class NewsController extends Controller
     $package->view += 1;
     $package->save();
 
+    $orderBy = blog::limit(6);
+    $data['orderBy'] = $orderBy;
+
+    $popu = DB::table('blogs')
+      ->select(
+         'blogs.*',
+         'blogs.image'
+         )
+      ->orderBy('view', 'desc')
+      ->limit(6)
+      ->get();
+      $data['popu'] = $popu;
+    //dd($popu);
 
     $objs = blog::find($id);
     $data['objs'] = $objs;

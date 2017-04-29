@@ -91,7 +91,12 @@
 								                    </select>
 																					</div>
 																				</div>
-
+										<div class="form-group">
+												<label class="col-md-3 control-label" for="profileFirstName">รหัสคอร์ส*</label>
+														<div class="col-md-8">
+																<input type="text" class="form-control" name="code_course" value="{{ old('code_course') }}" placeholder="EN101">
+														</div>
+										</div>
 
                       <div class="form-group">
                         <label class="col-md-3 control-label" for="profileFirstName">ราคาคอร์ส*</label>

@@ -47,6 +47,8 @@
                       <i class="fa fa-plus"></i> เพิ่มคอร์สเรียน</a>
                       <a class="btn btn-danger " href="{{url('admin/typecourse')}}" role="button">
                       <i class="fa fa-cubes"></i> ประเภทคอร์ส</a>
+                      <a class="btn btn-success " href="{{url('admin/category')}}" role="button">
+                      <i class="fa fa-question-circle"></i> หมวดหมู่แบบฝึกหัด</a>
                   </div>
 
                 </div>
@@ -55,7 +57,7 @@
                 <table class="table table-bordered table-striped mb-none dataTable " id="datatable-default">
                   <thead>
                     <tr>
-                      <th>#</th>
+                      <th>#code</th>
                       <th>คอร์สเรียน</th>
                       <th>ประเภท</th>
                       <th>ช่วงเวลาที่เรียน</th>
@@ -67,7 +69,7 @@
                     @if($objs)
                 @foreach($objs as $u)
                     <tr>
-                      <td>{{$u->id}}</td>
+                      <td>{{$u->code_course}}</td>
                       <td>{{$u->title_course}}</td>
                       <td>@foreach($course as $courses)
                         @if($u->type_course == $courses->id)
@@ -79,12 +81,15 @@
                       <td>{{$u->day_course}}</td>
 
                       <td>
-                        <a style="float:left; margin-right:8px;" class="btn btn-primary btn-xs" href="{{url('admin/course/'.$u->id.'/edit')}}" role="button"><i class="fa fa-wrench"></i> </a>
+                        @if($u->e_id)
+                        <a style="float:left; margin:3px;" class="btn btn-success btn-xs" href="{{url('admin/course/'.$u->e_id)}}" role="button"><i class="fa fa-question-circle"></i> </a>
+                        @endif
+                        <a style="float:left; margin:3px;" class="btn btn-primary btn-xs" href="{{url('admin/course/'.$u->id.'/edit')}}" role="button"><i class="fa fa-wrench"></i> </a>
 
                           <form  action="{{url('admin/course/'.$u->id)}}" method="post" onsubmit="return(confirm('Do you want Delete'))">
                             <input type="hidden" name="_method" value="DELETE">
                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-times "></i></button>
+                            <button type="submit" style="float:left; margin:3px;" class="btn btn-danger btn-xs"><i class="fa fa-times "></i></button>
                           </form>
 
                       </td>
